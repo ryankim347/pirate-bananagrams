@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { io } from 'socket.io-client';
 
-const SERVER_URL = 'http://localhost:3001';
+const SERVER_URL = import.meta.env.VITE_SERVER_URL || 'https://pirate-bananagrams-production.up.railway.app';
 
 export function useSocket() {
   const [socket, setSocket] = useState(null);

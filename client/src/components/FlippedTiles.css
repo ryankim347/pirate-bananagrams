@@ -1,26 +1,28 @@
 .flipped-tiles-section {
-  background: var(--bg-medium);
-  border: 2px solid var(--border);
-  border-radius: 12px;
+  background: var(--bg-white);
+  border: 3px solid var(--border);
+  border-radius: 16px;
   padding: 1.5rem;
   margin-bottom: 2rem;
+  box-shadow: 0 4px 12px var(--shadow);
 }
 
 .flipped-tiles-section h3 {
-  color: var(--text-light);
+  color: var(--text-dark);
   margin-bottom: 0.5rem;
   text-align: center;
 }
 
 .instructions {
-  color: var(--primary);
+  color: var(--success);
   text-align: center;
   font-size: 0.875rem;
   margin-bottom: 1rem;
   padding: 0.5rem;
-  background: rgba(37, 99, 235, 0.1);
-  border-radius: 6px;
+  background: rgba(124, 179, 66, 0.1);
+  border-radius: 8px;
   animation: pulse 2s infinite;
+  border: 2px solid rgba(124, 179, 66, 0.3);
 }
 
 @keyframes pulse {
@@ -35,12 +37,13 @@
   justify-content: center;
   min-height: 80px;
   padding: 1rem;
-  background: var(--bg-light);
-  border-radius: 8px;
+  background: var(--bg-cream);
+  border-radius: 12px;
+  border: 2px solid var(--border);
 }
 
 .no-tiles {
-  color: var(--text-dark);
+  color: var(--text-light);
   text-align: center;
   width: 100%;
   padding: 2rem;

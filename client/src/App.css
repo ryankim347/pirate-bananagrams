@@ -5,23 +5,25 @@
 }
 
 :root {
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
-  --secondary: #64748b;
-  --secondary-hover: #475569;
-  --success: #10b981;
-  --success-hover: #059669;
-  --warning: #f59e0b;
-  --warning-hover: #d97706;
-  --danger: #ef4444;
-  --danger-hover: #dc2626;
-  --bg-dark: #0f172a;
-  --bg-medium: #1e293b;
-  --bg-light: #334155;
-  --text-light: #f1f5f9;
-  --text-medium: #cbd5e1;
-  --text-dark: #64748b;
-  --border: #475569;
+  --primary: #ffd93d;
+  --primary-hover: #ffc107;
+  --secondary: #8b6f47;
+  --secondary-hover: #6b5535;
+  --success: #7cb342;
+  --success-hover: #689f38;
+  --warning: #ff8a65;
+  --warning-hover: #ff7043;
+  --danger: #e53935;
+  --danger-hover: #c62828;
+  --bg-light: #faf7f2;
+  --bg-cream: #f5f0e8;
+  --bg-white: #fff9f0;
+  --text-dark: #2c2416;
+  --text-medium: #5d4e37;
+  --text-light: #8b7355;
+  --border: #d4c4a8;
+  --border-dark: #c4b5a0;
+  --shadow: rgba(92, 78, 55, 0.15);
 }
 
 body {
@@ -30,8 +32,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  color: var(--text-light);
+  background: linear-gradient(135deg, #faf7f2 0%, #f5f0e8 100%);
+  color: var(--text-dark);
   min-height: 100vh;
 }
 
@@ -42,18 +44,19 @@ body {
 }
 
 .app-header {
-  background: var(--bg-medium);
+  background: var(--bg-white);
   padding: 1.5rem 2rem;
-  border-bottom: 2px solid var(--border);
+  border-bottom: 3px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 2px 8px var(--shadow);
 }
 
 .app-header h1 {
   font-size: 2rem;
-  color: var(--text-light);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  color: var(--text-dark);
+  text-shadow: 2px 2px 0px rgba(255, 217, 61, 0.3);
 }
 
 .connection-status {
@@ -83,13 +86,14 @@ body {
   background: var(--danger);
   color: white;
   padding: 1rem 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow);
   z-index: 1000;
   display: flex;
   align-items: center;
   gap: 1rem;
   animation: slideDown 0.3s ease-out;
+  border: 2px solid #c62828;
 }
 
 @keyframes slideDown {
@@ -117,13 +121,14 @@ body {
 .btn {
   padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px var(--shadow);
 }
 
 .btn:disabled {
@@ -133,18 +138,20 @@ body {
 
 .btn-primary {
   background: var(--primary);
-  color: white;
+  color: var(--text-dark);
+  border: 2px solid #e6c235;
 }
 
 .btn-primary:hover:not(:disabled) {
   background: var(--primary-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 217, 61, 0.4);
 }
 
 .btn-secondary {
   background: var(--secondary);
   color: white;
+  border: 2px solid #6b5535;
 }
 
 .btn-secondary:hover:not(:disabled) {
@@ -154,42 +161,46 @@ body {
 .btn-success {
   background: var(--success);
   color: white;
+  border: 2px solid #689f38;
 }
 
 .btn-success:hover:not(:disabled) {
   background: var(--success-hover);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 4px 12px rgba(124, 179, 66, 0.4);
 }
 
 .btn-warning {
   background: var(--warning);
   color: white;
+  border: 2px solid #ff7043;
 }
 
 .btn-warning:hover:not(:disabled) {
   background: var(--warning-hover);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+  box-shadow: 0 4px 12px rgba(255, 138, 101, 0.4);
 }
 
 /* Utility */
 input[type="text"] {
   padding: 0.75rem;
   border: 2px solid var(--border);
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 1rem;
-  background: var(--bg-light);
-  color: var(--text-light);
+  background: white;
+  color: var(--text-dark);
   transition: border-color 0.2s;
 }
 
 input[type="text"]:focus {
   outline: none;
   border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255, 217, 61, 0.2);
 }
 
 input[type="text"]:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  background: var(--bg-cream);
 }
