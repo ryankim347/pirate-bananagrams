@@ -105,7 +105,7 @@ function Game({ socket, emit, on, gameState, setGameState, playerId, roomCode, o
         }),
         flippedTiles,
       }));
-      showNotification(`${snatcherName} snatched: ${oldWords.join('+')} → ${newWord} 🏴‍☠️`);
+      showNotification(`${snatcherName} stole: ${oldWords.join('+')} → ${newWord} 🏴‍☠️`);
     }));
 
     // Game ended
@@ -331,7 +331,7 @@ function Game({ socket, emit, on, gameState, setGameState, playerId, roomCode, o
                   type="text"
                   value={wordInput}
                   onChange={(e) => setWordInput(e.target.value.toUpperCase())}
-                  placeholder={selectedWords.length > 0 ? "Type word to snatch..." : "Type a word to claim..."}
+                  placeholder={selectedWords.length > 0 ? "Type word to steal..." : "Type a word to claim..."}
                   disabled={gameState.status !== 'playing' || isValidating}
                   maxLength={20}
                   autoComplete="off"
@@ -342,7 +342,7 @@ function Game({ socket, emit, on, gameState, setGameState, playerId, roomCode, o
                   className={`btn ${selectedWords.length > 0 ? 'btn-warning' : 'btn-success'}`}
                   disabled={!wordInput.trim() || gameState.status !== 'playing' || isValidating}
                 >
-                  {isValidating ? '⏳' : selectedWords.length > 0 ? '🏴‍☠️ Snatch!' : '✨ Claim'}
+                  {isValidating ? '⏳' : selectedWords.length > 0 ? '🏴‍☠️ Steal!' : '✨ Claim'}
                 </button>
                 {selectedWords.length > 0 && (
                   <button
@@ -356,7 +356,7 @@ function Game({ socket, emit, on, gameState, setGameState, playerId, roomCode, o
               </div>
               {selectedWords.length > 0 && (
                 <div className="snatch-preview">
-                  <strong>Snatching:</strong> {selectedWords.join(' + ')} → ?
+                  <strong>Stealing:</strong> {selectedWords.join(' + ')} → ?
                 </div>
               )}
               <div className="word-hint">

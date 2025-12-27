@@ -54,7 +54,7 @@ function Lobby({ onCreateRoom, onJoinRoom, connected }) {
                     onChange={(e) => setReduceVowels(e.target.checked)}
                     disabled={!connected}
                   />
-                  <span>Reduce vowels (recommended for Snatch)</span>
+                  <span>Reduce vowels (recommended)</span>
                 </label>
               </div>
               <button
