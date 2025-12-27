@@ -1,0 +1,72 @@
+.tile-pool {
+  background: var(--bg-medium);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.tile-pool-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tiles-remaining {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tile-stack {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.tile-stack-layer {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #f5f0e8 0%, #e8dcc8 100%);
+  border: 3px solid #c4b5a0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.tile-count {
+  color: var(--text-light);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.turn-indicator {
+  font-size: 1rem;
+}
+
+.your-turn {
+  color: var(--success);
+  font-weight: 700;
+  animation: pulse 2s infinite;
+}
+
+.waiting-turn {
+  color: var(--text-medium);
+}
+
+.btn-flip {
+  width: 100%;
+  font-size: 1.125rem;
+  padding: 1rem;
+  background: var(--primary);
+  color: white;
+}
+
+.btn-flip:hover:not(:disabled) {
+  background: var(--primary-hover);
+  transform: scale(1.02);
+}
+
