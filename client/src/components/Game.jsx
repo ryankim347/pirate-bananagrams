@@ -187,17 +187,20 @@ function Game({ socket, emit, on, gameState, setGameState, playerId, roomCode, o
         return;
       }
 
-      // Calculate which tiles come from the table
-      const tableTiles = [];
+      // Calculate which tiles come from the table vs old words
       const wordLetters = word.split('');
       const oldTilesCopy = [...allOldTiles];
+      const tableTiles = [];
       
+      // For each letter in the new word, take it from old words first, then table
       for (const letter of wordLetters) {
         const oldIndex = oldTilesCopy.indexOf(letter);
-        if (oldIndex === -1) {
-          tableTiles.push(letter);
-        } else {
+        if (oldIndex !== -1) {
+          // Letter is from the old word(s)
           oldTilesCopy.splice(oldIndex, 1);
+        } else {
+          // Letter must come from table
+          tableTiles.push(letter);
         }
       }
 

@@ -238,7 +238,7 @@ class Game {
     }
 
     // Execute the snatch
-    // Remove old words from target
+    // Remove old words from target (this happens even if stealing from self)
     for (const oldWord of normalizedOldWords) {
       const index = target.words.indexOf(oldWord);
       if (index > -1) {
@@ -250,9 +250,15 @@ class Game {
     // Remove table tiles from flipped pool
     this.removeTilesFromPool(normalizedTableTiles, this.flippedTiles);
 
-    // Add new word to snatcher
-    snatcher.words.push(normalizedNewWord);
-    snatcher.score = snatcher.words.reduce((sum, word) => sum + word.length, 0);
+    // Add new word to snatcher (only if different from target, otherwise already modified above)
+    if (snatcherId !== targetPlayerId) {
+      snatcher.words.push(normalizedNewWord);
+      snatcher.score = snatcher.words.reduce((sum, word) => sum + word.length, 0);
+    } else {
+      // Stealing from self - word already removed above, just add the new one
+      target.words.push(normalizedNewWord);
+      target.score = target.words.reduce((sum, word) => sum + word.length, 0);
+    }
 
     return { success: true };
   }
