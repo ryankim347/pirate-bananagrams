@@ -57,6 +57,13 @@ body {
   font-size: 2rem;
   color: var(--text-dark);
   text-shadow: 2px 2px 0px rgba(255, 217, 61, 0.3);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.app-header h1:hover {
+  color: var(--secondary);
+  transform: translateY(-1px);
 }
 
 .connection-status {
@@ -94,6 +101,22 @@ body {
   gap: 1rem;
   animation: slideDown 0.3s ease-out;
   border: 2px solid #c62828;
+}
+
+.reconnecting-banner {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: var(--text-dark);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow);
+  z-index: 1000;
+  animation: slideDown 0.3s ease-out, pulse 2s infinite;
+  border: 2px solid #e6c235;
+  font-weight: 600;
 }
 
 @keyframes slideDown {

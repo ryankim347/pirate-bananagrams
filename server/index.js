@@ -65,15 +65,22 @@ io.on('connection', (socket) => {
         return;
       }
       
-      const { game } = result;
+      const { game, isReconnect } = result;
       socket.join(roomCode.toUpperCase());
       
-      console.log(`${playerName} joined room: ${roomCode}`);
-      
-      // Notify existing players
-      socket.to(roomCode.toUpperCase()).emit('playerJoined', {
-        player: game.players.get(socket.id),
-      });
+      if (isReconnect) {
+        console.log(`${playerName} reconnected to room: ${roomCode}`);
+        // Notify others of reconnection
+        socket.to(roomCode.toUpperCase()).emit('playerReconnected', {
+          player: game.players.get(socket.id),
+        });
+      } else {
+        console.log(`${playerName} joined room: ${roomCode}`);
+        // Notify existing players of new player
+        socket.to(roomCode.toUpperCase()).emit('playerJoined', {
+          player: game.players.get(socket.id),
+        });
+      }
       
       if (callback) {
         callback({

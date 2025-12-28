@@ -48,13 +48,34 @@ class GameManager {
    * @param {string} roomCode - Room code to join
    * @param {string} playerName - Name of the joining player
    * @param {string} socketId - Socket ID of the joining player
-   * @returns {Object|null} { success, game, error }
+   * @returns {Object|null} { success, game, error, isReconnect }
    */
   joinRoom(roomCode, playerName, socketId) {
     const game = this.games.get(roomCode.toUpperCase());
     
     if (!game) {
       return { success: false, error: 'Room not found' };
+    }
+    
+    // Check if player with same name already exists (reconnection case)
+    const existingPlayer = Array.from(game.players.values()).find(p => p.name === playerName);
+    
+    if (existingPlayer) {
+      // Player is reconnecting - remove old socket ID and add new one
+      const oldSocketId = existingPlayer.id;
+      this.playerRooms.delete(oldSocketId);
+      game.removePlayer(oldSocketId);
+      
+      // Add with new socket ID but preserve their words/score
+      game.addPlayer(socketId, playerName, existingPlayer.isHost);
+      const reconnectedPlayer = game.players.get(socketId);
+      reconnectedPlayer.words = existingPlayer.words;
+      reconnectedPlayer.score = existingPlayer.score;
+      
+      this.playerRooms.set(socketId, roomCode.toUpperCase());
+      
+      console.log(`${playerName} reconnected to room ${roomCode}`);
+      return { success: true, game, isReconnect: true };
     }
     
     if (game.status !== 'waiting') {
@@ -68,7 +89,7 @@ class GameManager {
     game.addPlayer(socketId, playerName, false);
     this.playerRooms.set(socketId, roomCode.toUpperCase());
     
-    return { success: true, game };
+    return { success: true, game, isReconnect: false };
   }
 
   /**
