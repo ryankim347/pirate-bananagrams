@@ -26,7 +26,7 @@ function Lobby({ onCreateRoom, onJoinRoom, connected }) {
       <div className="lobby-card">
         <h2>Welcome to Pirate Bananagrams!</h2>
         <p className="lobby-description">
-          A fast-paced multiplayer word game where you claim and snatch words from tiles and other players.
+          A fast-paced multiplayer word game where you claim and steal words from tiles and other players.
         </p>
 
         <div className="name-input-section">
